@@ -49,3 +49,20 @@ function playRound(playerSelection, computerSelection) {
 			break;
 	}
 }
+
+function game() {
+	const totalRounds = 5;
+	let roundCount = 0;
+	let roundsWon = 0;
+
+	while (roundCount < totalRounds){
+		let playerSelection = prompt("Make your selection!", "Rock, Paper, or Scissors");
+		let result = playRound(playerSelection, computerPlay());
+		if (result.startsWith("You Win!")){
+			roundsWon++;
+		}
+		console.log(result);
+		roundCount++;
+	}
+	console.log(`You won ${roundsWon} out of ${totalRounds} rounds`);
+}
