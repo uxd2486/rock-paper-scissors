@@ -24,7 +24,7 @@ function playRound(playerSelection, computerSelection) {
 		case "paper":
 			switch (computerSelection) {
 				case "rock":
-					return "You Win! Rock beats Paper";
+					return "You Win! Paper beats Rock";
 					break;
 				case "paper":
 					return "Tie!";
@@ -66,3 +66,5 @@ function game() {
 	}
 	console.log(`You won ${roundsWon} out of ${totalRounds} rounds`);
 }
+
+game();
