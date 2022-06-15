@@ -58,22 +58,41 @@ function game() {
 	console.log(`You won ${roundsWon} out of ${totalRounds} rounds`);
 }
 
+function resetScreen() {
+
+}
+
 function endGame(result) {
+	// show the winner
 	const winDiv = document.querySelector(".game-count");
 	if (result.startsWith("You Win!")){
 		winDiv.textContent = "You Won The Game!"
 	} else {
 		winDiv.textContent = "You Lost The Game!"
 	}
+
+	// remove the counts
+	const counts = document.querySelectorAll(".score");
+	counts.forEach(countDiv => {
+		countDiv.textContent = "";
+	})
+
+	// add a play again button
+	const playButton = document.createElement("button");
+	playButton.classList.add("play-again");
+	playButton.textContent = "Play again?";
+	playButton.addEventListener("click", resetScreen);
+	const body = document.querySelector("body");
+	body.appendChild(playButton);
 }
 
 const playButtons = document.querySelectorAll(".play");
 playButtons.forEach(button => {
-	console.log(button.firstChild.nodeValue);
+	console.log(button.textContent);
 	button.addEventListener("click", () => {
 
 		// play the round and get the result
-		const result = playRound(button.firstChild.nodeValue, computerPlay());
+		const result = playRound(button.textContent, computerPlay());
 		const resDiv = document.querySelector(".results");
 		resDiv.textContent = result;
 
