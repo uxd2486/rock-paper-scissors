@@ -51,14 +51,13 @@ function playGame() {
 	// update the win counts
 	let countDiv;
 	if (result.startsWith("You Win!")){
-		countDiv = document.querySelector(".score .player");
+		countDiv = document.querySelector(".player-score span");
 	} else if (result.startsWith("You Lose")) {
-		countDiv = document.querySelector(".score .computer");
+		countDiv = document.querySelector(".computer-score span");
 	} else {
 		return;
 	}
 	let count = parseInt(countDiv.textContent, 10);
-	console.log(count);
 	count++;
 	countDiv.textContent = count.toString();
 
@@ -69,7 +68,38 @@ function playGame() {
 }
 
 function resetScreen() {
+	// reset the per-game results
+	const results = document.querySelector(".results");
+	results.textContent = "";
 
+	// reset the overall results
+	const gameCount = document.querySelector(".game-count");
+	gameCount.textContent = "First to 5 wins!";
+
+	// remove the "play again?" button
+	const body = document.querySelector("body");
+	const playButton = document.querySelector(".play-again");
+	body.removeChild(playButton);
+
+	// activate the play buttons
+	const buttons = document.querySelectorAll(".play");
+	buttons.forEach(button => {
+		button.addEventListener("click", playGame);
+	})
+
+	// show the player score
+	const playerScore = document.querySelector(".player-score");
+	playerScore.textContent = "Player: ";
+	const playerCount = document.createElement("span");
+	playerCount.textContent = "0";
+	playerScore.appendChild(playerCount);
+
+	//show the computer score
+	const computerScore = document.querySelector(".computer-score");
+	computerScore.textContent = "computer: ";
+	const computerCount = document.createElement("span");
+	computerCount.textContent = "0";
+	computerScore.appendChild(computerCount);
 }
 
 function endGame(result) {
@@ -88,10 +118,10 @@ function endGame(result) {
 	})
 
 	// remove the counts
-	const counts = document.querySelectorAll(".score");
-	counts.forEach(countDiv => {
-		countDiv.textContent = "";
-	})
+	const playerCount = document.querySelector(".player-score");
+	playerCount.textContent = "";
+	const computerCount = document.querySelector(".computer-score");
+	computerCount.textContent = "";
 
 	// add a play again button
 	const playButton = document.createElement("button");
