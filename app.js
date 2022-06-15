@@ -58,4 +58,4 @@ function game() {
 	console.log(`You won ${roundsWon} out of ${totalRounds} rounds`);
 }
 
-game();
+//game();
