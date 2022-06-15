@@ -11,7 +11,7 @@ function playRound(playerSelection, computerSelection) {
 		case "rock":
 			switch (computerSelection) {
 				case "rock":
-					return "Tie";
+					return "Tie!";
 				case "paper":
 					return "You Lose! Paper beats Rock";
 				case "scissors":
@@ -58,12 +58,42 @@ function game() {
 	console.log(`You won ${roundsWon} out of ${totalRounds} rounds`);
 }
 
+function endGame(result) {
+	const winDiv = document.querySelector(".game-count");
+	if (result.startsWith("You Win!")){
+		winDiv.textContent = "You Won The Game!"
+	} else {
+		winDiv.textContent = "You Lost The Game!"
+	}
+}
+
 const playButtons = document.querySelectorAll(".play");
 playButtons.forEach(button => {
 	console.log(button.firstChild.nodeValue);
 	button.addEventListener("click", () => {
+
+		// play the round and get the result
 		const result = playRound(button.firstChild.nodeValue, computerPlay());
 		const resDiv = document.querySelector(".results");
 		resDiv.textContent = result;
+
+		// update the win counts
+		let countDiv;
+		if (result.startsWith("You Win!")){
+			countDiv = document.querySelector(".score .player");
+		} else if (result.startsWith("You Lose")) {
+			countDiv = document.querySelector(".score .computer");
+		} else {
+			return;
+		}
+		let count = parseInt(countDiv.textContent, 10);
+		console.log(count);
+		count++;
+		countDiv.textContent = count.toString();
+
+		// check if anyone won yet
+		if (count === 5){
+			endGame(result);
+		}
 	})
 })
