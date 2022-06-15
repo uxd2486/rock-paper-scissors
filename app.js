@@ -62,6 +62,8 @@ const playButtons = document.querySelectorAll(".play");
 playButtons.forEach(button => {
 	console.log(button.firstChild.nodeValue);
 	button.addEventListener("click", () => {
-		console.log(playRound(button.firstChild.nodeValue, computerPlay()));
+		const result = playRound(button.firstChild.nodeValue, computerPlay());
+		const resDiv = document.querySelector(".results");
+		resDiv.textContent = result;
 	})
 })
