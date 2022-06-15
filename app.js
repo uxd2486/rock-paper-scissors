@@ -41,21 +41,31 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
-function game() {
-	const totalRounds = 5;
-	let roundCount = 0;
-	let roundsWon = 0;
+function playGame() {
 
-	while (roundCount < totalRounds){
-		let playerSelection = prompt("Make your selection!", "Rock, Paper, or Scissors");
-		let result = playRound(playerSelection, computerPlay());
-		if (result.startsWith("You Win!")){
-			roundsWon++;
-		}
-		console.log(result);
-		roundCount++;
+	// play the round and get the result
+	const result = playRound(this.textContent, computerPlay());
+	const resDiv = document.querySelector(".results");
+	resDiv.textContent = result;
+
+	// update the win counts
+	let countDiv;
+	if (result.startsWith("You Win!")){
+		countDiv = document.querySelector(".score .player");
+	} else if (result.startsWith("You Lose")) {
+		countDiv = document.querySelector(".score .computer");
+	} else {
+		return;
 	}
-	console.log(`You won ${roundsWon} out of ${totalRounds} rounds`);
+	let count = parseInt(countDiv.textContent, 10);
+	console.log(count);
+	count++;
+	countDiv.textContent = count.toString();
+
+	// check if anyone won yet
+	if (count === 5){
+		endGame(result);
+	}
 }
 
 function resetScreen() {
@@ -70,6 +80,12 @@ function endGame(result) {
 	} else {
 		winDiv.textContent = "You Lost The Game!"
 	}
+
+	// disable the buttons
+	const buttons = document.querySelectorAll(".play");
+	buttons.forEach(button => {
+		button.removeEventListener("click", playGame);
+	})
 
 	// remove the counts
 	const counts = document.querySelectorAll(".score");
@@ -89,30 +105,5 @@ function endGame(result) {
 const playButtons = document.querySelectorAll(".play");
 playButtons.forEach(button => {
 	console.log(button.textContent);
-	button.addEventListener("click", () => {
-
-		// play the round and get the result
-		const result = playRound(button.textContent, computerPlay());
-		const resDiv = document.querySelector(".results");
-		resDiv.textContent = result;
-
-		// update the win counts
-		let countDiv;
-		if (result.startsWith("You Win!")){
-			countDiv = document.querySelector(".score .player");
-		} else if (result.startsWith("You Lose")) {
-			countDiv = document.querySelector(".score .computer");
-		} else {
-			return;
-		}
-		let count = parseInt(countDiv.textContent, 10);
-		console.log(count);
-		count++;
-		countDiv.textContent = count.toString();
-
-		// check if anyone won yet
-		if (count === 5){
-			endGame(result);
-		}
-	})
+	button.addEventListener("click", playGame)
 })
