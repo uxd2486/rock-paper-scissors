@@ -58,4 +58,10 @@ function game() {
 	console.log(`You won ${roundsWon} out of ${totalRounds} rounds`);
 }
 
-//game();
+const playButtons = document.querySelectorAll(".play");
+playButtons.forEach(button => {
+	console.log(button.firstChild.nodeValue);
+	button.addEventListener("click", () => {
+		console.log(playRound(button.firstChild.nodeValue, computerPlay()));
+	})
+})
