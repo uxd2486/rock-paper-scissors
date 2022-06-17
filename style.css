@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+    color: ghostwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.play {
+    background-color: black;
+    color: #ed7905;
+    border: 2px solid #ed7905;
+}
+
+img {
+    width: fit-content;
+    height: fit-content;
+}
