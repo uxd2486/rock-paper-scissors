@@ -1,0 +1,68 @@
+body {
+    font-family: determination_mono_webregular, serif;
+    background-color: black;
+    color: ghostwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 30%;
+    margin: auto;
+}
+
+img {
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    margin-top: 50px;
+    margin-bottom: 8px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid ghostwhite;
+    padding: 30px 30px 50px;
+    font-size: 24px;
+    height: 70px;
+}
+
+.scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.scores * {
+    margin: 8px 8px 4px;
+    font-size: 32px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.play {
+    background-color: black;
+    color: #ed7905;
+    border: 2px solid #ed7905;
+    margin: 4px 8px 8px;
+    font-size: 24px;
+}
+
+@font-face {
+    font-family: 'determination_sans_webregular';
+    src: url('fonts/determinationsanswebregular-369x-webfont.woff2') format('woff2'),
+    url('fonts/determinationsanswebregular-369x-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'determination_mono_webregular';
+    src: url('fonts/determinationmonowebregular-z5oq-webfont.woff2') format('woff2'),
+    url('fonts/determinationmonowebregular-z5oq-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
