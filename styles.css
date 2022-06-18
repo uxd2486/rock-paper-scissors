@@ -49,6 +49,9 @@ img {
     border: 2px solid #ed7905;
     margin: 4px 8px 8px;
     font-size: 24px;
+    font-family: mercyregular, sans-serif;
+    padding-left: 10px;
+    padding-bottom: 4px;
 }
 
 @font-face {
@@ -65,4 +68,13 @@ img {
     url('fonts/determinationmonowebregular-z5oq-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'mercyregular';
+    src: url('fonts/mercy-webfont.woff2') format('woff2'),
+    url('fonts/mercy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
