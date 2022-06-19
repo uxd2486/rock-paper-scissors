@@ -111,6 +111,10 @@ function endGame(result) {
 		winDiv.textContent = "You Lost The Game!"
 	}
 
+	// clear the per-round results
+	const roundDiv = document.querySelector(".results");
+	roundDiv.textContent = "";
+
 	// disable the buttons
 	const buttons = document.querySelectorAll(".play");
 	buttons.forEach(button => {
