@@ -76,10 +76,10 @@ function resetScreen() {
 	const gameCount = document.querySelector(".game-count");
 	gameCount.textContent = "First to 5 wins!";
 
-	// remove the "play again?" button
-	const body = document.querySelector("body");
+	// deactivate the "play again?" button
 	const playButton = document.querySelector(".play-again");
-	body.removeChild(playButton);
+	playButton.classList.add("inactive");
+	playButton.classList.remove("active");
 
 	// activate the play buttons
 	const buttons = document.querySelectorAll(".play");
@@ -123,13 +123,11 @@ function endGame(result) {
 	const computerCount = document.querySelector(".computer-score");
 	computerCount.textContent = "";
 
-	// add a play again button
-	const playButton = document.createElement("button");
-	playButton.classList.add("play-again");
-	playButton.textContent = "Play again?";
+	// activate the retry button
+	const playButton = document.querySelector(".play-again");
+	playButton.classList.add("active");
+	playButton.classList.remove("inactive");
 	playButton.addEventListener("click", resetScreen);
-	const body = document.querySelector("body");
-	body.appendChild(playButton);
 }
 
 const playButtons = document.querySelectorAll(".play");

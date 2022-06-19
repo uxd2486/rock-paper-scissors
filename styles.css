@@ -43,10 +43,19 @@ img {
     justify-content: space-around;
 }
 
-.play {
-    background-color: black;
+.active {
     color: #ed7905;
     border: 2px solid #ed7905;
+}
+
+.inactive {
+    color: #666666;
+    border: 2px solid #666666;
+}
+
+.active,
+.inactive {
+    background-color: black;
     margin: 4px 8px 8px;
     font-size: 24px;
     font-family: mercyregular, sans-serif;
