@@ -48,19 +48,16 @@ img {
     border: 2px solid #ed7905;
 }
 
-.inactive {
-    color: #666666;
-    border: 2px solid #666666;
-}
 
-.active,
-.inactive {
+button {
     background-color: black;
     margin: 4px 8px 8px;
     font-size: 24px;
     font-family: mercyregular, sans-serif;
     padding-left: 10px;
     padding-bottom: 4px;
+    color: #666666;
+    border: 2px solid #666666;
 }
 
 @font-face {

@@ -78,25 +78,25 @@ function resetScreen() {
 
 	// deactivate the "play again?" button
 	const playButton = document.querySelector(".play-again");
-	playButton.classList.add("inactive");
 	playButton.classList.remove("active");
 
 	// activate the play buttons
 	const buttons = document.querySelectorAll(".play");
 	buttons.forEach(button => {
+		button.classList.add("active");
 		button.addEventListener("click", playGame);
 	})
 
 	// show the player score
 	const playerScore = document.querySelector(".player-score");
-	playerScore.textContent = "Player: ";
+	playerScore.textContent = "YOU:";
 	const playerCount = document.createElement("span");
 	playerCount.textContent = "0";
 	playerScore.appendChild(playerCount);
 
 	//show the computer score
 	const computerScore = document.querySelector(".computer-score");
-	computerScore.textContent = "computer: ";
+	computerScore.textContent = "COMPUTER:";
 	const computerCount = document.createElement("span");
 	computerCount.textContent = "0";
 	computerScore.appendChild(computerCount);
@@ -114,6 +114,7 @@ function endGame(result) {
 	// disable the buttons
 	const buttons = document.querySelectorAll(".play");
 	buttons.forEach(button => {
+		button.classList.remove("active");
 		button.removeEventListener("click", playGame);
 	})
 
@@ -126,7 +127,6 @@ function endGame(result) {
 	// activate the retry button
 	const playButton = document.querySelector(".play-again");
 	playButton.classList.add("active");
-	playButton.classList.remove("inactive");
 	playButton.addEventListener("click", resetScreen);
 }
 
